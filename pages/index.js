@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
+import {Container, Row, Col} from 'react-bootstrap';
 import axios from 'axios'
+import {AnimatePresence} from 'framer-motion'
 import Posts from './components/Posts'
 import Pagination from './components/Pagination'
 import Modal from './components/Modal'
@@ -42,15 +44,16 @@ const Home = () => {
 
     return (
     <div>
-      <div className="outer_layer" onClick={() => setModalOpen(false)}>
+      <div className="posts-container">
+        <h1 className="post-titles">Post Titles</h1>
         <Posts posts={currentPosts} loading={loading} renderModal={renderModal}/> 
-
-        <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate}/>
       </div>
 
-      <div className="modal">
-        {modalOpen && modalPost ? <Modal modalPost={modalPost} setModalOpen={setModalOpen}/> : null}
-      </div>
+      <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate}/>
+
+      <AnimatePresence>
+        {modalOpen && <Modal modalPost={modalPost} setModalOpen={setModalOpen} modalOpen={modalOpen}/>}
+      </AnimatePresence>
     </div>
   )
 }

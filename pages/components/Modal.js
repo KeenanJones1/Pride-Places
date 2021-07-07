@@ -1,10 +1,15 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/fontawesome-svg-core'
+import {motion} from 'framer-motion'
 
 
-const Modal = ({modalPost}) => {
+
+const Modal = ({modalPost, setModalOpen}) => {
  const [user, setUser] = useState({})
  const [loading, setLoading] = useState(false)
+
  useEffect(() => {
 
   const getUser = async () => {
@@ -18,18 +23,86 @@ const Modal = ({modalPost}) => {
 
 
  const renderUserInfo = () => {
-  return <div className="user-info">
-   <h3>{user.name}</h3>
-   <h3>{user.company.catchPhrase}</h3>
- </div>
+  return( 
+  <div className="user-info">
+   <h3 id="name"><span>Author: </span>{user.name}</h3>
+   <p id="catchphrase">"{user.company.catchPhrase}"</p>
+  </div>)
  }
 
+
  return (
-  <div>
-   <h1>{modalPost.title}</h1>
-   <h2>{modalPost.body}</h2>
-   {user.name ? renderUserInfo() : null}
-  </div>
+  <>
+     <FontAwesomeIcon icon={faTimes} id="exit-icon"/>
+     <motion.div 
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition:{
+          duration: 0.3,
+        }
+      }}
+      exit={{
+        opacity: 0,
+        transition: {
+          delay: 0.3
+        }
+      }}
+      
+    className="modal-backdrop"
+    onClick={() => setModalOpen(false)}
+    />
+    <motion.div 
+      initial={{
+        scale: 0,
+      }}
+
+      animate={{
+        scale: 1,
+        transition:{
+          duration: 0.3,
+        }
+      }}
+      exit={{
+        scale: 0,
+        transition: {
+          delay: 0.3
+        }
+      }}
+    className="modal-content-wrapper">
+      <motion.div 
+        initial={{
+          x: 100,
+          opacity: 0,
+        }}
+
+        animate={{
+          x: 0,
+          opacity: 1,
+          transition:{
+            delay: 0.3,
+            duration: 0.3
+          }
+        }}
+
+        exit={{
+          x: 100,
+          opacity: 0,
+          transition: {
+            duration: 0.3
+          }
+        }}
+      className="modal-content">
+          <h1 className="modal-post-title">{modalPost.title}</h1>
+        {user.name ? renderUserInfo() : null}
+        <div className="post-body">
+          <p>{modalPost.body}</p>
+        </div >
+      </motion.div>
+    </motion.div>
+  </>
  )
 }
 

@@ -6,12 +6,12 @@ const Posts = ({posts, loading, renderModal}) => {
 
 const renderPosts = () => {
  return posts.map(post =>{
-  return <li onClick={(event) => renderModal(event, post)} key={post.id}>{post.title}</li>
+  return <li className="post-title" onClick={(event) => renderModal(event, post)} key={post.id}>{post.title}</li>
  })
 }
 
  return (
-  <ul>
+  <ul className="posts">
    { posts.length > 0 && !loading ? renderPosts() : null}
   </ul>
  )
