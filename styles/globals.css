@@ -16,9 +16,38 @@ body {
   box-sizing: border-box;
 }
 
+.background-svg {
+  position: fixed;
+  z-index: 0;
+  bottom: 20%;
+  right: 10%;
+}
+
+/* variables  */
+:root {
+  --main-bg-color: #253237;
+  --secondary-color: #2b9348;
+  --white: #e9ecef;
+}
+/* variables end */
+
 /* modal styling begin */
 #exit-icon {
-  color: #253237;
+  color: var(--white);
+  font-size: 3rem;
+  position: fixed;
+  top: 20%;
+  right: 15%;
+}
+
+#exit-icon:hover {
+  color: var(--main-bg-color);
+  cursor: pointer;
+}
+
+#icon-btn {
+  background: transparent;
+  border: none;
 }
 
 .modal-backdrop {
@@ -32,16 +61,16 @@ body {
 
 .modal-content-wrapper {
   position: fixed;
-  width: 30vw;
+  width: 80vw;
   height: 60vh;
-  background: #2b9348;
+  background: var(--secondary-color);
   margin: auto;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 30px 60px;
-  color: #253237;
+  color: var(--main-bg-color);
   overflow-y: scroll;
 }
 
@@ -56,79 +85,166 @@ body {
 #catchphrase {
   padding: 0;
   margin: 0;
-  line-height: 0.1em;
 }
+
+#name {
+  display: flex;
+  flex-direction: row;
+}
+
+#name > span {
+  padding-right: 0.3rem;
+  padding-top: 0.09em;
+}
+
+/* three modal screen sizes */
+
+@media screen and (min-width: 992px) {
+  .modal-content-wrapper {
+    width: 40vw;
+    height: 60vh;
+    background: var(--secondary-color);
+  }
+
+  .post-body {
+    font-size: 1.7rem;
+  }
+
+  #name > span {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal-content-wrapper {
+    width: 60vw;
+    height: 50vh;
+  }
+
+  #name > span {
+    font-size: 0.7em;
+  }
+
+  .post-body {
+    font-size: 1.7rem;
+  }
+
+  #exit-icon {
+    top: 30%;
+    right: 23%;
+  }
+}
+
+@media screen and (min-width: 568px) {
+  #name > span {
+    font-size: 0.7em;
+    position: static;
+    padding: 0;
+  }
+
+  .post-body {
+    font-size: 1.7rem;
+  }
+
+  #exit-icon {
+    top: 20%;
+    right: 15%;
+  }
+}
+
 /* modal styling end */
 
-/* post stlying begin */
-.post-body {
-  width: 300px;
-  font-size: 1.4rem;
-  font-weight: bold;
-  padding-top: 2rem;
+/* Post title list begin */
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .post-title {
-  color: #e9ecef;
-  padding-bottom: 1em;
-  font-size: 1.3rem;
-  cursor: pointer;
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .post-title:hover {
-  color: #2b9348;
+  cursor: pointer;
+  color: var(--secondary-color);
 }
 
 .posts {
+  width: 35vw;
+  list-style: none;
   padding: 0;
-}
-
-.posts-container {
-  padding-left: 20rem;
-  margin-top: 1rem;
-  margin-bottom: 6rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-titles {
-  font-size: 4rem;
-  margin: 0;
-  color: #e9ecef;
-}
-/* post styling end */
-
-/* pagination begins */
-.page-link {
-  cursor: pointer;
-  padding-left: 2rem;
+  color: var(--secondary-color);
+  border-bottom: var(--white) solid 2px;
+  margin-bottom: 3rem;
 }
 
-.page-link:hover {
-  text-decoration: underline;
-  color: #e9ecef;
-}
+/* Post title list end */
 
+/* Pagination styling begin */
 .pagination {
   display: flex;
-  margin: auto;
-  font-size: 2rem;
-  padding-left: 10rem;
-}
-
-.page {
+  flex-direction: column;
+  align-items: center;
   margin: 0;
-  height: 20vh;
-  position: relative;
-  top: 60%;
-  display: flex;
-}
-
-a {
-  color: #2b9348;
-  text-decoration: none;
-}
-
-li {
+  padding: 0;
   list-style: none;
-  margin-right: 4rem;
 }
-/* pagination ends */
+
+.pagination:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+}
+
+.pagination:before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+}
+
+.num-list {
+  font-size: 1.4rem;
+  padding-top: 10px;
+  color: var(--white);
+}
+
+.num-list > a {
+  padding: 10px;
+}
+
+.num-list:last-child {
+  margin-bottom: 20px;
+}
+
+.num-list:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.num-list:focus {
+  transform: translateY(-3px);
+}
+
+.side {
+  width: 40px;
+  position: fixed;
+  bottom: 0;
+}
+
+/* Pagination styling end */

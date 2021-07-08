@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/fontawesome-svg-core'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import {motion} from 'framer-motion'
 
 
@@ -32,8 +32,7 @@ const Modal = ({modalPost, setModalOpen}) => {
 
 
  return (
-  <>
-     <FontAwesomeIcon icon={faTimes} id="exit-icon"/>
+  <> 
      <motion.div 
       initial={{
         opacity: 0,
@@ -72,6 +71,26 @@ const Modal = ({modalPost, setModalOpen}) => {
         }
       }}
     className="modal-content-wrapper">
+      <motion.button 
+        initial={{
+          scale: 0
+        }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.3,
+            duration: 0.3
+          }
+        }}
+
+        exit={{
+          scale: 0,
+          opacity: 0,
+        }}
+      id="icon-btn" onClick={() => setModalOpen(false)}>
+        <FontAwesomeIcon icon={faTimes} id="exit-icon"/>
+      </motion.button>
       <motion.div 
         initial={{
           x: 100,

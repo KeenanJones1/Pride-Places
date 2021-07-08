@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import {Container, Row, Col} from 'react-bootstrap';
+import Image from 'next/image'
+import Img from '../public/undraw_quick_chat_re_bit5.svg'
 import axios from 'axios'
 import {AnimatePresence} from 'framer-motion'
 import Posts from './components/Posts'
@@ -44,12 +45,18 @@ const Home = () => {
 
     return (
     <div>
+      <div className="background-svg">
+        {/* <Image src={Img} /> */}
+      </div>
       <div className="posts-container">
         <h1 className="post-titles">Post Titles</h1>
         <Posts posts={currentPosts} loading={loading} renderModal={renderModal}/> 
       </div>
 
-      <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate}/>
+      <div className="side">
+        <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate}/>
+      </div>
+
 
       <AnimatePresence>
         {modalOpen && <Modal modalPost={modalPost} setModalOpen={setModalOpen} modalOpen={modalOpen}/>}
