@@ -26,7 +26,7 @@ const Modal = ({modalPost, setModalOpen}) => {
   return( 
   <div className="user-info">
    <h3 id="name"><span>Author: </span>{user.name}</h3>
-   <p id="catchphrase">"{user.company.catchPhrase}"</p>
+   <p id="catchphrase">{'"' + user.company.catchPhrase + '"'} -catchphrase</p>
   </div>)
  }
 

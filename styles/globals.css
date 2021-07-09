@@ -50,6 +50,17 @@ body {
   border: none;
 }
 
+.background-svg {
+  positon: fixed;
+  left: 60%;
+}
+
+@media screen and (max-width: 992px) {
+  .background-svg {
+    display: none;
+  }
+}
+
 .modal-backdrop {
   position: fixed;
   height: 100vh;
@@ -190,6 +201,7 @@ body {
 /* Post title list end */
 
 /* Pagination styling begin */
+
 .pagination {
   display: flex;
   flex-direction: column;

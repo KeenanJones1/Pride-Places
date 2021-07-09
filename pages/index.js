@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import Image from 'next/image'
-import Img from '../public/undraw_quick_chat_re_bit5.svg'
+import Img from '../public/Playful_cat.svg'
 import axios from 'axios'
 import {AnimatePresence} from 'framer-motion'
 import Posts from './components/Posts'
@@ -46,7 +46,7 @@ const Home = () => {
     return (
     <div>
       <div className="background-svg">
-        {/* <Image src={Img} /> */}
+        <Image src={Img} id="cat" alt="cat"/>
       </div>
       <div className="posts-container">
         <h1 className="post-titles">Post Titles</h1>
@@ -54,7 +54,7 @@ const Home = () => {
       </div>
 
       <div className="side">
-        <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate}/>
+        <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate} currentPage={currentPage}/>
       </div>
 
 
