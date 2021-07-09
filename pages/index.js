@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Img from '../public/Playful_cat.svg'
 import axios from 'axios'
 import {AnimatePresence} from 'framer-motion'
-import Posts from './components/Posts'
-import Pagination from './components/Pagination'
-import Modal from './components/Modal'
+import Posts from '../components/Posts'
+import Pagination from '../components/Pagination'
+import Modal from '../components/Modal'
 
 const Home = () => {
   const [posts, setPosts] = useState([])

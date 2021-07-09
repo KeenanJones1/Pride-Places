@@ -19,7 +19,7 @@ const Modal = ({modalPost, setModalOpen}) => {
    setLoading(false)
  }
  getUser();
- }, [])
+ })
 
 
  const renderUserInfo = () => {
