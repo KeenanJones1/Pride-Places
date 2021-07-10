@@ -44,7 +44,7 @@ const Home = () => {
   }
 
     return (
-    <div>
+    <div className="app">
       <div className="background-svg">
         <Image src={Img} id="cat" alt="cat"/>
       </div>
@@ -56,7 +56,6 @@ const Home = () => {
       <div className="side">
         <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate} currentPage={currentPage}/>
       </div>
-
 
       <AnimatePresence>
         {modalOpen && <Modal modalPost={modalPost} setModalOpen={setModalOpen} modalOpen={modalOpen}/>}
