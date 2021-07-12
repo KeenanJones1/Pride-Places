@@ -45,17 +45,25 @@ const Home = () => {
 
     return (
     <div className="app">
-      <div className="background-svg">
-        <Image src={Img} id="cat" alt="cat"/>
-      </div>
-      <div className="posts-container">
-        <h1 className="post-titles">Post Titles</h1>
-        <Posts posts={currentPosts} loading={loading} renderModal={renderModal}/> 
+       <div className="item-1">
+        <div className="side">
+          <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate} currentPage={currentPage}/>
+        </div>
       </div>
 
-      <div className="side">
-        <Pagination totalPosts={posts.length} postPerPage={perPage} paginate={paginate} currentPage={currentPage}/>
+      <div className="item-2">
+        <div className="background-svg">
+          <Image src={Img} id="cat" alt="cat"/>
+        </div>
+
+        <div className="header"><h1 className="post-titles">Post Titles</h1></div>
+        
+        <div className="posts-container">
+          <Posts posts={currentPosts} loading={loading} renderModal={renderModal}/> 
+        </div>
       </div>
+    
+     
 
       <AnimatePresence>
         {modalOpen && <Modal modalPost={modalPost} setModalOpen={setModalOpen} modalOpen={modalOpen}/>}
